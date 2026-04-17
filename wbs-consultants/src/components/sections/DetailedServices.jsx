@@ -1,9 +1,15 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { detailedServices } from "../../data/detailedContent";
 
 const DetailedServices = () => {
   const [expandedService, setExpandedService] = useState(null);
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   const services = [
     { key: "businessConsultant", color: "emerald" },
@@ -21,6 +27,28 @@ const DetailedServices = () => {
 
   const toggleService = (key) => {
     setExpandedService(expandedService === key ? null : key);
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
   };
 
   const renderServiceContent = (service, data) => {
@@ -381,54 +409,87 @@ const DetailedServices = () => {
   };
 
   return (
-    <section id="detailed-services" className="py-16 bg-white dark:bg-gray-900">
+    <section
+      id="detailed-services"
+      className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center text-emerald-700 dark:text-emerald-400 mb-4">
-          Our Expertise in Detail
-        </h2>
-        <p className="text-center text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto">
-          Explore our comprehensive range of services designed to transform your
-          business
-        </p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Our Expertise in{" "}
+            <span className="text-emerald-600 dark:text-emerald-400">
+              Detail
+            </span>
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            Explore our comprehensive range of services designed to transform
+            your business
+          </p>
+        </motion.div>
 
-        <div className="space-y-4">
+        <motion.div
+          ref={ref}
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          className="space-y-4"
+        >
           {services.map((service) => {
             const data = detailedServices[service.key];
             const isExpanded = expandedService === service.key;
 
             return (
-              <div
+              <motion.div
                 key={service.key}
-                className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
+                variants={itemVariants}
+                className="border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300"
               >
-                <button
+                <motion.button
                   onClick={() => toggleService(service.key)}
-                  className="w-full px-6 py-4 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-750 transition-colors duration-200 flex justify-between items-center"
+                  className="w-full px-6 py-5 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-750 transition-colors duration-200 flex justify-between items-center group"
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
                 >
                   <div className="text-left">
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                       {data.title}
                     </h3>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                       {data.subtitle}
                     </p>
                   </div>
-                  {isExpanded ? (
-                    <ChevronUp className="w-6 h-6 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
-                  ) : (
+                  <motion.div
+                    animate={{ rotate: isExpanded ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     <ChevronDown className="w-6 h-6 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
-                  )}
-                </button>
+                  </motion.div>
+                </motion.button>
 
-                {isExpanded && (
-                  <div className="px-6 py-6 bg-white dark:bg-gray-900">
-                    {renderServiceContent(service, data)}
-                  </div>
-                )}
-              </div>
+                <AnimatePresence>
+                  {isExpanded && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 py-6 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-700">
+                        {renderServiceContent(service, data)}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

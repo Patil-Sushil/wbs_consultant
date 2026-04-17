@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import {
   Mail,
   Phone,
@@ -7,6 +9,7 @@ import {
   User as UserIcon,
   MessageSquare,
   CheckCircle,
+  Send,
 } from "lucide-react";
 import { addConsultation } from "../../services/firebaseService";
 import { sendConsultationEmail } from "../../services/emailService";
@@ -22,6 +25,10 @@ const ContactCTA = () => {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   const handleChange = (e) => {
     setFormData({
@@ -68,76 +75,133 @@ const ContactCTA = () => {
   return (
     <section
       id="contact"
-      className="py-16 bg-gradient-to-br from-emerald-50 to-blue-50 dark:from-gray-800 dark:to-gray-900"
+      className="py-20 bg-gradient-to-br from-emerald-50 via-teal-50 to-blue-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-emerald-900 dark:text-white mb-4">
-            Let's Transform Your Business Together
+      {/* Background Decorations */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute top-20 left-10 w-72 h-72 bg-emerald-200/20 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 right-10 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.5, 0.3, 0.5],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Let's Transform Your{" "}
+            <span className="text-emerald-600 dark:text-emerald-400">
+              Business Together
+            </span>
           </h2>
-          <p className="text-emerald-800 dark:text-gray-300 text-lg">
+          <p className="text-xl text-gray-700 dark:text-gray-300">
             Ready to take the next step? Schedule your consultation today!
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12"
+        >
           {/* Contact Information */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
               Get in Touch
             </h3>
 
             <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
-                    Email
-                  </h4>
-                  <a
-                    href="mailto:contact@wbsconsultants.com"
-                    className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400"
+              {[
+                {
+                  icon: Mail,
+                  title: "Email",
+                  content: "contact@wbsconsultants.com",
+                  href: "mailto:contact@wbsconsultants.com",
+                },
+                {
+                  icon: Phone,
+                  title: "Phone",
+                  content: "+91 123-456-7890",
+                  href: "tel:+911234567890",
+                },
+                {
+                  icon: MapPin,
+                  title: "Locations",
+                  content: "Mumbai | Bangalore | Delhi",
+                  href: null,
+                },
+              ].map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                    whileHover={{ x: 5 }}
+                    className="flex items-start space-x-4"
                   >
-                    contact@wbsconsultants.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
-                    Phone
-                  </h4>
-                  <a
-                    href="tel:+911234567890"
-                    className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400"
-                  >
-                    +91 123-456-7890
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
-                    Locations
-                  </h4>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    Mumbai | Bangalore | Delhi
-                  </p>
-                </div>
-              </div>
+                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
+                        {item.title}
+                      </h4>
+                      {item.href ? (
+                        <a
+                          href={item.href}
+                          className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                        >
+                          {item.content}
+                        </a>
+                      ) : (
+                        <p className="text-gray-600 dark:text-gray-400">
+                          {item.content}
+                        </p>
+                      )}
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
 
-            <div className="mt-8 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="mt-8 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700"
+            >
               <h4 className="font-semibold text-gray-900 dark:text-white mb-3">
                 Office Hours
               </h4>
@@ -146,108 +210,117 @@ const ContactCTA = () => {
                 <p>Saturday: 10:00 AM - 4:00 PM</p>
                 <p>Sunday: Closed</p>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Consultation Form */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 border border-gray-100 dark:border-gray-700"
+          >
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
               Schedule a Consultation
             </h3>
 
             {submitted ? (
-              <div className="text-center py-12">
-                <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center py-12"
+              >
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 10 }}
+                >
+                  <CheckCircle className="w-20 h-20 text-green-600 mx-auto mb-4" />
+                </motion.div>
+                <h4 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
                   Request Submitted!
                 </h4>
                 <p className="text-gray-600 dark:text-gray-400">
                   We'll get back to you within 24 hours. Check your email for
                   confirmation.
                 </p>
-              </div>
+              </motion.div>
             ) : (
               <>
                 {error && (
-                  <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg"
+                  >
                     <p className="text-red-600 dark:text-red-400">{error}</p>
-                  </div>
+                  </motion.div>
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Full Name *
-                    </label>
-                    <div className="relative">
-                      <UserIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                        placeholder="John Doe"
-                      />
-                    </div>
-                  </div>
+                  {[
+                    {
+                      name: "name",
+                      type: "text",
+                      label: "Full Name",
+                      icon: UserIcon,
+                      placeholder: "John Doe",
+                    },
+                    {
+                      name: "email",
+                      type: "email",
+                      label: "Email Address",
+                      icon: Mail,
+                      placeholder: "john@example.com",
+                    },
+                    {
+                      name: "phone",
+                      type: "tel",
+                      label: "Phone Number",
+                      icon: Phone,
+                      placeholder: "+91 1234567890",
+                    },
+                    {
+                      name: "preferredDate",
+                      type: "date",
+                      label: "Preferred Date",
+                      icon: Calendar,
+                      min: new Date().toISOString().split("T")[0],
+                    },
+                  ].map((field, index) => {
+                    const Icon = field.icon;
+                    return (
+                      <motion.div
+                        key={field.name}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={inView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                      >
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                          {field.label} *
+                        </label>
+                        <div className="relative">
+                          <Icon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                          <input
+                            type={field.type}
+                            name={field.name}
+                            value={formData[field.name]}
+                            onChange={handleChange}
+                            required
+                            min={field.min}
+                            className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300"
+                            placeholder={field.placeholder}
+                          />
+                        </div>
+                      </motion.div>
+                    );
+                  })}
 
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Email Address *
-                    </label>
-                    <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                        placeholder="john@example.com"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Phone Number *
-                    </label>
-                    <div className="relative">
-                      <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                        placeholder="+91 1234567890"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Preferred Date *
-                    </label>
-                    <div className="relative">
-                      <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                      <input
-                        type="date"
-                        name="preferredDate"
-                        value={formData.preferredDate}
-                        onChange={handleChange}
-                        required
-                        min={new Date().toISOString().split("T")[0]}
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.9 }}
+                  >
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Message (Optional)
                     </label>
@@ -258,24 +331,33 @@ const ContactCTA = () => {
                         value={formData.message}
                         onChange={handleChange}
                         rows="4"
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none"
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none transition-all duration-300"
                         placeholder="Tell us about your business needs..."
                       ></textarea>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <button
+                  <motion.button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-lg transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold py-4 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                   >
-                    {loading ? "Submitting..." : "Schedule Consultation"}
-                  </button>
+                    {loading ? (
+                      "Submitting..."
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        Schedule Consultation
+                      </>
+                    )}
+                  </motion.button>
                 </form>
               </>
             )}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

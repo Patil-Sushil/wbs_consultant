@@ -4,6 +4,7 @@ import Footer from "../components/layout/Footer";
 import Hero from "../components/sections/Hero";
 import About from "../components/sections/About";
 import Services from "../components/sections/Services";
+import ConsultantVsAnalyst from "../components/sections/ConsultantVsAnalyst";
 import DetailedServices from "../components/sections/DetailedServices";
 import WhyChooseUs from "../components/sections/WhyChooseUs";
 import Testimonials from "../components/sections/Testimonials";
@@ -20,6 +21,7 @@ const Home = () => {
         <Hero />
         <About />
         <Services />
+        <ConsultantVsAnalyst />
         <DetailedServices />
         <WhyChooseUs />
         <Testimonials />

@@ -123,6 +123,22 @@ export const testimonials = [
     position: "VP Operations at ManufacturingPro",
     rating: 5,
   },
+  {
+    id: 4,
+    quote:
+      "The fund-raising advisory service helped us secure Series A funding. Their approach truly created a win-win situation for all stakeholders.",
+    author: "Neha Gupta",
+    position: "Founder at StartupHub",
+    rating: 5,
+  },
+  {
+    id: 5,
+    quote:
+      "Their business promotion strategy in India was spot-on. We saw a 150% increase in regional market penetration within 6 months.",
+    author: "Vikram Singh",
+    position: "Marketing Director at RetailCo",
+    rating: 5,
+  },
 ];
 
 export const whyChooseUs = [
@@ -146,5 +162,16 @@ export const whyChooseUs = [
     id: 4,
     title: "Data-Driven Decisions",
     description: "Evidence-based recommendations backed by thorough analysis",
+  },
+  {
+    id: 5,
+    title: "Win-Win Philosophy",
+    description:
+      "Creating bilateral value for all stakeholders in every engagement",
+  },
+  {
+    id: 6,
+    title: "Continuous Innovation",
+    description: "Staying ahead with latest industry trends and best practices",
   },
 ];
