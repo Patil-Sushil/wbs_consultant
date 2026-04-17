@@ -73,7 +73,7 @@ const Navbar = ({ theme, toggleTheme }) => {
             </div>
             <div>
               <div className="text-lg font-bold text-gray-900 dark:text-white">
-                YOUR NAME
+                WBS CONSULTANT
               </div>
               <div className="text-xs text-emerald-600 dark:text-emerald-400">
                 Financial Consult | ERP Specialist
@@ -97,8 +97,6 @@ const Navbar = ({ theme, toggleTheme }) => {
               </a>
             ))}
 
-            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-
             <a
               href="#contact"
               onClick={(e) => {
@@ -109,6 +107,8 @@ const Navbar = ({ theme, toggleTheme }) => {
             >
               Book a Consultation
             </a>
+
+            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
           </div>
 
           {/* Mobile Menu Button */}
