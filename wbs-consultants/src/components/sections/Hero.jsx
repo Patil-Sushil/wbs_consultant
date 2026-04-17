@@ -1,3 +1,5 @@
+import { Phone } from "lucide-react";
+
 const Hero = () => {
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
@@ -40,12 +42,22 @@ const Hero = () => {
           Empowering Your Business for Success
         </p>
 
-        <button
-          onClick={() => scrollToSection("#contact")}
-          className="bg-white hover:bg-emerald-50 text-emerald-700 px-8 py-3 rounded-md font-semibold transition-colors duration-300"
-        >
-          Book a Consultation
-        </button>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            onClick={() => scrollToSection("#contact")}
+            className="bg-white hover:bg-emerald-50 text-emerald-700 px-8 py-3 rounded-md font-semibold transition-colors duration-300"
+          >
+            Book a Consultation
+          </button>
+
+          <button
+            onClick={() => scrollToSection("#contact")}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md font-semibold transition-colors duration-300 flex items-center justify-center space-x-2"
+          >
+            <Phone className="w-5 h-5" />
+            <span>Schedule a Call</span>
+          </button>
+        </div>
       </div>
     </section>
   );
