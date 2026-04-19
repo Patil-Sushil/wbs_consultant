@@ -7,10 +7,10 @@ const Navbar = ({ theme, toggleTheme }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Services", href: "#services" },
-    { name: "Why Choose Me", href: "#why-us" },
-    { name: "Testimonials", href: "#testimonials" },
+    { name: "HOME", href: "#home" },
+    { name: "SERVICES", href: "#services" },
+    { name: "ABOUT US", href: "#about" },
+    { name: "CONTACT", href: "#contact" },
   ];
 
   useEffect(() => {
@@ -41,8 +41,8 @@ const Navbar = ({ theme, toggleTheme }) => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-md"
-          : "bg-white dark:bg-gray-900"
+          ? "bg-[#0D4A3F]/95 backdrop-blur-sm shadow-lg"
+          : "bg-[#0D4A3F]"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,30 +54,23 @@ const Navbar = ({ theme, toggleTheme }) => {
               e.preventDefault();
               scrollToSection("#home");
             }}
-            className="flex items-center space-x-2"
+            className="flex items-center gap-3 transition-transform duration-300 hover:scale-105"
           >
-            <div className="w-10 h-10 bg-emerald-600 rounded flex items-center justify-center">
-              <svg
-                className="w-6 h-6 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                />
-              </svg>
-            </div>
-            <div>
-              <div className="text-lg font-bold text-gray-900 dark:text-white">
-                WBS CONSULTANT
-              </div>
-              <div className="text-xs text-emerald-600 dark:text-emerald-400">
-                Financial Consult | ERP Specialist
-              </div>
+            {/* Logo Image */}
+            <img
+              src="/logo.png"
+              alt="WBS Consultants Logo"
+              className="h-14 w-auto"
+            />
+
+            {/* Logo Text */}
+            <div className="flex flex-col leading-none">
+              <span className="text-2xl font-bold text-white tracking-wider">
+                WBS
+              </span>
+              <span className="text-xs font-semibold text-white/90 tracking-wide">
+                CONSULTANTS
+              </span>
             </div>
           </a>
 
@@ -91,22 +84,11 @@ const Navbar = ({ theme, toggleTheme }) => {
                   e.preventDefault();
                   scrollToSection(link.href);
                 }}
-                className="text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300 font-medium"
+                className="text-white hover:text-[#7FD99A] transition-colors duration-300 font-semibold text-sm tracking-wide"
               >
                 {link.name}
               </a>
             ))}
-
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("#contact");
-              }}
-              className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-md font-medium transition-colors duration-300"
-            >
-              Book a Consultation
-            </a>
 
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
           </div>
@@ -116,7 +98,7 @@ const Navbar = ({ theme, toggleTheme }) => {
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-700 dark:text-gray-300"
+              className="text-white"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -126,7 +108,7 @@ const Navbar = ({ theme, toggleTheme }) => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+        <div className="md:hidden bg-[#0D4A3F] border-t border-[#7FD99A]/20">
           <div className="px-4 py-6 space-y-4">
             {navLinks.map((link) => (
               <a
@@ -136,21 +118,11 @@ const Navbar = ({ theme, toggleTheme }) => {
                   e.preventDefault();
                   scrollToSection(link.href);
                 }}
-                className="block text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 font-medium"
+                className="block text-white hover:text-[#7FD99A] font-semibold text-sm tracking-wide"
               >
                 {link.name}
               </a>
             ))}
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("#contact");
-              }}
-              className="block bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-md font-medium text-center"
-            >
-              Book a Consultation
-            </a>
           </div>
         </div>
       )}

@@ -1,0 +1,14 @@
+# Netlify Redirects for SPA (Single Page Application)
+# This file handles client-side routing and prevents 404 errors on page refresh
+
+# Redirect all routes to index.html for React Router to handle
+/*    /index.html   200
+
+# API proxy (if needed in future)
+# /api/*  https://your-api-domain.com/:splat  200
+
+# Admin routes
+/admin/*  /index.html  200
+
+# Force HTTPS (optional - Netlify does this by default)
+# http://*  https://:splat  301!
