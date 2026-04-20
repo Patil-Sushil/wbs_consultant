@@ -1,3 +1,5 @@
+import logo from "../../assets/logo.png";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -9,18 +11,18 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <img
-                src="/logo.png"
+                src={logo}
                 alt="WBS Consultants Logo"
                 className="h-12 w-auto"
               />
-              <div className="flex flex-col leading-none">
+              {/* <div className="flex flex-col leading-none">
                 <span className="text-xl font-bold text-white tracking-wider">
                   WBS
                 </span>
                 <span className="text-xs font-semibold text-white/90 tracking-wide">
                   CONSULTANTS
                 </span>
-              </div>
+              </div> */}
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
               Expert consulting services for managing and optimizing your

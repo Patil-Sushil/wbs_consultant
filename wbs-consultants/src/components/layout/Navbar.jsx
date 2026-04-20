@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import logo from "../../assets/logo.png";
 
 const Navbar = ({ theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -46,7 +47,7 @@ const Navbar = ({ theme, toggleTheme }) => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-24">
           {/* Logo */}
           <a
             href="#home"
@@ -58,12 +59,12 @@ const Navbar = ({ theme, toggleTheme }) => {
           >
             {/* Logo Image */}
             <img
-              src="/logo.png"
+              src={logo}
               alt="WBS Consultants Logo"
-              className="h-14 w-auto"
+              className="h-20 sm:h-24 w-auto"
             />
 
-            {/* Logo Text */}
+            {/* Logo Text
             <div className="flex flex-col leading-none">
               <span className="text-2xl font-bold text-white tracking-wider">
                 WBS
@@ -71,7 +72,7 @@ const Navbar = ({ theme, toggleTheme }) => {
               <span className="text-xs font-semibold text-white/90 tracking-wide">
                 CONSULTANTS
               </span>
-            </div>
+            </div> */}
           </a>
 
           {/* Desktop Navigation */}
