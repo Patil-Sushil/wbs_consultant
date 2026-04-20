@@ -42,12 +42,12 @@ const Navbar = ({ theme, toggleTheme }) => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#0D4A3F]/95 backdrop-blur-sm shadow-lg"
-          : "bg-[#0D4A3F]"
+          ? "bg-[#0D4A3F]/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-lg"
+          : "bg-[#0D4A3F] dark:bg-gray-900"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-24">
+        <div className="flex justify-between items-center h-20 sm:h-24">
           {/* Logo */}
           <a
             href="#home"
@@ -61,7 +61,7 @@ const Navbar = ({ theme, toggleTheme }) => {
             <img
               src={logo}
               alt="WBS Consultants Logo"
-              className="h-20 sm:h-24 w-auto"
+              className="h-14 sm:h-20 md:h-24 w-auto object-contain"
             />
 
             {/* Logo Text

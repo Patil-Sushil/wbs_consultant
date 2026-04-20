@@ -9,6 +9,7 @@ import DetailedServices from "../components/sections/DetailedServices";
 import WhyChooseUs from "../components/sections/WhyChooseUs";
 import Testimonials from "../components/sections/Testimonials";
 import ContactCTA from "../components/sections/ContactCTA";
+import WhatsAppButton from "../components/ui/WhatsAppButton";
 
 const Home = () => {
   const { theme, toggleTheme } = useTheme();
@@ -29,6 +30,9 @@ const Home = () => {
       </main>
 
       <Footer />
+
+      {/* WhatsApp Floating Button */}
+      <WhatsAppButton />
     </div>
   );
 };

@@ -66,9 +66,19 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4">Contact Us</h3>
             <div className="space-y-2 text-sm text-gray-300">
               <p>Shri</p>
-              <p>Phone: 9371225251</p>
-              <p>Email: shri@wbsconsultants.com</p>
-              <p className="mt-4">Mumbai | Bangalore | Delhi</p>
+              <a
+                href="tel:+919371112215"
+                className="block hover:text-[#7FD99A] transition-colors duration-300"
+              >
+                Phone: +91 9371 112 215
+              </a>
+              <a
+                href="mailto:shri@wbsconsultants.in"
+                className="block hover:text-[#7FD99A] transition-colors duration-300"
+              >
+                Email: shri@wbsconsultants.in
+              </a>
+              <p className="mt-4">Sangli</p>
             </div>
           </div>
         </div>

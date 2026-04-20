@@ -206,10 +206,19 @@ const Hero = () => {
               transition={{ delay: 0.7 }}
             >
               <p className="text-2xl sm:text-3xl font-bold">Shri</p>
-              <p className="text-xl sm:text-2xl font-bold">9371225251</p>
-              <p className="text-lg sm:text-xl font-semibold break-all">
-                shri@wbsconsultants.com
-              </p>
+              <a
+                href="tel:+919371112215"
+                className="text-xl sm:text-2xl font-bold hover:text-[#0A5F4F] dark:hover:text-gray-700 transition-colors"
+              >
+                +91 9371 112 215
+              </a>{" "}
+              <br></br>
+              <a
+                href="mailto:shri@wbsconsultants.in"
+                className="text-lg sm:text-xl font-semibold break-all hover:text-[#0A5F4F] dark:hover:text-gray-700 transition-colors"
+              >
+                shri@wbsconsultants.in
+              </a>
             </motion.div>
           </motion.div>
         </div>

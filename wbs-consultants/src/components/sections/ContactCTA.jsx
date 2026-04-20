@@ -145,19 +145,19 @@ const ContactCTA = () => {
                 {
                   icon: Mail,
                   title: "Email",
-                  content: "shri@wbsconsultants.com",
-                  href: "mailto:shri@wbsconsultants.com",
+                  content: "shri@wbsconsultants.in",
+                  href: "mailto:shri@wbsconsultants.in",
                 },
                 {
                   icon: Phone,
                   title: "Phone",
-                  content: "9371225251",
-                  href: "tel:+919371225251",
+                  content: "+91 9371 112 215",
+                  href: "tel:+919371112215",
                 },
                 {
                   icon: MapPin,
                   title: "Locations",
-                  content: "Mumbai | Bangalore | Delhi",
+                  content: "Sangli",
                   href: null,
                 },
               ].map((item, index) => {
