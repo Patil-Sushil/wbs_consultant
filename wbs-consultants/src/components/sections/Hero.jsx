@@ -210,14 +210,14 @@ const Hero = () => {
                 href="tel:+919371112215"
                 className="text-xl sm:text-2xl font-bold hover:text-[#0A5F4F] dark:hover:text-gray-700 transition-colors"
               >
-                +91 9371 112 215
+                +91 937 111 2215
               </a>{" "}
               <br></br>
               <a
-                href="mailto:shri@wbsconsultants.in"
+                href="mailto:wbsconsultants@outlook.com"
                 className="text-lg sm:text-xl font-semibold break-all hover:text-[#0A5F4F] dark:hover:text-gray-700 transition-colors"
               >
-                shri@wbsconsultants.in
+                wbsconsultants@outlook.com
               </a>
             </motion.div>
           </motion.div>

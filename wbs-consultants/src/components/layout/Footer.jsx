@@ -70,13 +70,13 @@ const Footer = () => {
                 href="tel:+919371112215"
                 className="block hover:text-[#7FD99A] transition-colors duration-300"
               >
-                Phone: +91 9371 112 215
+                Phone: +91 937 111 2215
               </a>
               <a
-                href="mailto:shri@wbsconsultants.in"
+                href="mailto:wbsconsultants@outlook.com"
                 className="block hover:text-[#7FD99A] transition-colors duration-300"
               >
-                Email: shri@wbsconsultants.in
+                Email: wbsconsultants@outlook.com
               </a>
               <p className="mt-4">Sangli</p>
             </div>

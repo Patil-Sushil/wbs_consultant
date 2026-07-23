@@ -161,8 +161,8 @@ netlify deploy --prod --dir=dist
 
 ## 📞 Contact Information
 
-- **Email**: shri@wbsconsultants.in
-- **Phone**: +91 9371 112 215
+- **Email**: wbsconsultants@outlook.com
+- **Phone**: +91 937 111 2215
 - **Locations**: Mumbai | Bangalore | Delhi
 
 ## 🔐 Environment Variables Required

@@ -32,13 +32,20 @@ const Services = () => {
   };
 
   const scrollToService = (link) => {
-    const element = document.querySelector(link);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-    }
+    // Update the URL hash first to trigger auto-expand
+    window.location.hash = link.replace("#", "");
+
+    // Then scroll to the element (heading)
+    setTimeout(() => {
+      const element = document.querySelector(link);
+      if (element) {
+        // Scroll to the top of the card/heading
+        const offset = 100; // Increased offset to show more above the heading
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+      }
+    }, 100);
   };
 
   return (

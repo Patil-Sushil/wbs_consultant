@@ -145,13 +145,13 @@ const ContactCTA = () => {
                 {
                   icon: Mail,
                   title: "Email",
-                  content: "shri@wbsconsultants.in",
-                  href: "mailto:shri@wbsconsultants.in",
+                  content: "wbsconsultants@outlook.com",
+                  href: "mailto:wbsconsultants@outlook.com",
                 },
                 {
                   icon: Phone,
                   title: "Phone",
-                  content: "+91 9371 112 215",
+                  content: "+91 937 111 2215",
                   href: "tel:+919371112215",
                 },
                 {

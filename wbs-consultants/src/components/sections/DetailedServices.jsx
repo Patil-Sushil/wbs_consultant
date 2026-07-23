@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ChevronDown, ChevronUp } from "lucide-react";
@@ -10,6 +10,47 @@ const DetailedServices = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  // Listen for navigation with service key to auto-expand
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const serviceKey = hash.replace("#", "");
+
+        // Map of kebab-case to camelCase
+        const serviceMapping = {
+          "business-consultant": "businessConsultant",
+          "business-analyst": "businessAnalyst",
+          "finance-analyst": "financeAnalyst",
+          "fund-raising": "fundRaising",
+          "business-promotion": "businessPromotion",
+          "finance-education": "financeEducation",
+          "strategic-planning": "strategicPlanning",
+          "process-optimization": "processOptimization",
+          mentorship: "mentorship",
+          "erp-development": "erpDevelopment",
+          "solution-architect": "solutionArchitect",
+        };
+
+        const camelKey = serviceMapping[serviceKey];
+        if (camelKey) {
+          // Expand immediately
+          setExpandedService(camelKey);
+        }
+      }
+    };
+
+    // Call on mount to handle initial hash
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
 
   const services = [
     { key: "businessConsultant", color: "emerald" },
@@ -446,17 +487,28 @@ const DetailedServices = () => {
             return (
               <motion.div
                 key={service.key}
+                id={data.id}
                 variants={itemVariants}
                 className="border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300"
               >
                 <motion.button
                   onClick={() => toggleService(service.key)}
-                  className="w-full px-6 py-5 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-750 transition-colors duration-200 flex justify-between items-center group"
+                  className={`w-full px-6 py-5 transition-colors duration-200 flex justify-between items-center group ${
+                    isExpanded
+                      ? "bg-emerald-50 dark:bg-emerald-900/20"
+                      : "bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-750"
+                  }`}
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                 >
                   <div className="text-left">
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                    <h3
+                      className={`text-xl font-semibold transition-colors ${
+                        isExpanded
+                          ? "text-emerald-600 dark:text-emerald-400"
+                          : "text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400"
+                      }`}
+                    >
                       {data.title}
                     </h3>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
@@ -467,7 +519,13 @@ const DetailedServices = () => {
                     animate={{ rotate: isExpanded ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <ChevronDown className="w-6 h-6 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
+                    <ChevronDown
+                      className={`w-6 h-6 flex-shrink-0 ${
+                        isExpanded
+                          ? "text-emerald-600 dark:text-emerald-400"
+                          : "text-emerald-600 dark:text-emerald-400"
+                      }`}
+                    />
                   </motion.div>
                 </motion.button>
 

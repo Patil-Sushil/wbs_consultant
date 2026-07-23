@@ -45,7 +45,7 @@ npm run build
    VITE_EMAILJS_SERVICE_ID=your_service_id
    VITE_EMAILJS_TEMPLATE_ID=your_template_id
    VITE_EMAILJS_PUBLIC_KEY=your_public_key
-   VITE_ADMIN_EMAIL=admin@wbsconsultants.com
+   VITE_ADMIN_EMAIL=wbsconsultants@outlook.com
    VITE_ADMIN_PASSWORD=your_secure_password
    ```
 
@@ -144,7 +144,7 @@ netlify env:set VITE_FIREBASE_APP_ID "your_app_id"
 netlify env:set VITE_EMAILJS_SERVICE_ID "your_service_id"
 netlify env:set VITE_EMAILJS_TEMPLATE_ID "your_template_id"
 netlify env:set VITE_EMAILJS_PUBLIC_KEY "your_public_key"
-netlify env:set VITE_ADMIN_EMAIL "admin@wbsconsultants.com"
+netlify env:set VITE_ADMIN_EMAIL "wbsconsultants@outlook.com"
 netlify env:set VITE_ADMIN_PASSWORD "your_secure_password"
 ```
 

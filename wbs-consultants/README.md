@@ -62,7 +62,7 @@ VITE_EMAILJS_TEMPLATE_ID=your_template_id
 VITE_EMAILJS_PUBLIC_KEY=your_public_key
 
 # Admin Credentials
-VITE_ADMIN_EMAIL=admin@wbsconsultants.com
+VITE_ADMIN_EMAIL=wbsconsultants@outlook.com
 VITE_ADMIN_PASSWORD=your_secure_password
 ```
 
@@ -185,7 +185,7 @@ wbs-consultants/
 
 Access the admin dashboard at `/admin`:
 
-- Default email: `admin@wbsconsultants.com`
+- Default email: `wbsconsultants@outlook.com`
 - Password: Set in `.env` file
 
 **Features:**
@@ -301,7 +301,7 @@ This project is proprietary and confidential.
 
 ## 👥 Support
 
-For support, email: contact@wbsconsultants.com
+For support, email: wbsconsultants@outlook.com
 
 ## 🙏 Acknowledgments
 
