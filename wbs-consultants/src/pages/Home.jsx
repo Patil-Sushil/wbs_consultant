@@ -10,12 +10,16 @@ import WhyChooseUs from "../components/sections/WhyChooseUs";
 import Testimonials from "../components/sections/Testimonials";
 import ContactCTA from "../components/sections/ContactCTA";
 import WhatsAppButton from "../components/ui/WhatsAppButton";
+import PreLoader from "../components/ui/PreLoader";
 
 const Home = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+      {/* PreLoader Animation */}
+      <PreLoader />
+
       <Navbar theme={theme} toggleTheme={toggleTheme} />
 
       <main>

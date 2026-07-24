@@ -9,8 +9,8 @@ const Navbar = ({ theme, toggleTheme }) => {
 
   const navLinks = [
     { name: "HOME", href: "#home" },
-    { name: "SERVICES", href: "#services" },
     { name: "ABOUT US", href: "#about" },
+    { name: "SERVICES", href: "#services" },
     { name: "CONTACT", href: "#contact" },
   ];
 
@@ -48,32 +48,56 @@ const Navbar = ({ theme, toggleTheme }) => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20 sm:h-24">
-          {/* Logo */}
-          <a
-            href="#home"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection("#home");
-            }}
-            className="flex items-center gap-3 transition-transform duration-300 hover:scale-105"
-          >
-            {/* Logo Image */}
-            <img
-              src={logo}
-              alt="WBS Consultants Logo"
-              className="h-14 sm:h-20 md:h-24 w-auto object-contain"
-            />
+          {/* Left Side - Logo & Contact Info */}
+          <div className="flex items-center gap-6 lg:gap-10">
+            {/* Logo */}
+            <a
+              href="#home"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("#home");
+              }}
+              className="flex items-center gap-3 transition-transform duration-300 hover:scale-105"
+            >
+              <img
+                src={logo}
+                alt="WBS Consultants Logo"
+                className="h-14 sm:h-20 md:h-24 w-auto object-contain"
+              />
+            </a>
 
-            {/* Logo Text
-            <div className="flex flex-col leading-none">
-              <span className="text-2xl font-bold text-white tracking-wider">
-                WBS
-              </span>
-              <span className="text-xs font-semibold text-white/90 tracking-wide">
-                CONSULTANTS
-              </span>
-            </div> */}
-          </a>
+            {/* Contact Info - Desktop Only */}
+            <div className="hidden lg:flex items-center gap-6 border-l-2 border-[#7FD99A]/30 pl-6">
+              {/* Phone */}
+              <a
+                href="tel:+919371112215"
+                className="flex flex-col hover:scale-105 transition-transform"
+              >
+                <span className="text-[#7FD99A] dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+                  Call Us
+                </span>
+                <span className="text-white text-sm font-bold">
+                  +91 937 111 2215
+                </span>
+              </a>
+
+              {/* Divider */}
+              <div className="h-10 w-px bg-[#7FD99A]/20"></div>
+
+              {/* Email */}
+              <a
+                href="mailto:wbsconsultants@outlook.com"
+                className="flex flex-col hover:scale-105 transition-transform"
+              >
+                <span className="text-[#7FD99A] dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+                  Email Us
+                </span>
+                <span className="text-white text-sm font-medium">
+                  wbsconsultants@outlook.com
+                </span>
+              </a>
+            </div>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">

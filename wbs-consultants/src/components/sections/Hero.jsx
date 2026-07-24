@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import homeIcon from "../../assets/homeicon.png";
 
 const Hero = () => {
@@ -16,11 +16,11 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative bg-gradient-to-br from-[#0D4A3F] via-[#0A5F4F] to-[#0D4A3F] dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20 overflow-hidden min-h-[85vh] lg:min-h-[90vh] flex items-center"
+      className="relative bg-gradient-to-br from-[#0D4A3F] via-[#0A5F4F] to-[#0D4A3F] dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-32 sm:pt-36 lg:pt-40 pb-20 overflow-hidden min-h-screen flex items-center"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden opacity-10">
-        {[...Array(15)].map((_, i) => (
+        {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-2 h-2 bg-[#7FD99A] dark:bg-emerald-400 rounded-full"
@@ -41,46 +41,59 @@ const Hero = () => {
         ))}
       </div>
 
-      <div className="w-full grid lg:grid-cols-2 gap-0 relative z-10 max-w-[1600px] mx-auto">
-        {/* Left Side - Content */}
-        <div className="bg-[#0D4A3F]/50 dark:bg-gray-900/50 backdrop-blur-sm flex items-center justify-center px-6 sm:px-8 lg:px-12 py-12 lg:py-16">
+      {/* Decorative gradient blobs */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-[#7FD99A]/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl"></div>
+
+      <div className="w-full relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Content Container */}
+        <div className="flex items-center justify-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-lg w-full"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-5xl w-full text-center"
           >
-            {/* Badge */}
-            <motion.div
+            {/* Main Heading with Stagger Animation */}
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-[#7FD99A]/20 dark:bg-emerald-500/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-[#7FD99A]/30 dark:border-emerald-500/30"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white dark:text-gray-100 mb-8 leading-tight"
             >
-              <CheckCircle className="w-4 h-4 text-[#7FD99A] dark:text-emerald-400" />
-              <span className="text-sm font-semibold text-white dark:text-gray-200">
-                Trusted Financial Experts
-              </span>
-            </motion.div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white dark:text-gray-100 mb-5 leading-tight">
               WORKS IN
               <br />
-              <span className="text-[#7FD99A] dark:text-emerald-400">
+              <motion.span
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="text-[#7FD99A] dark:text-emerald-400 inline-block"
+              >
                 BALANCE
-              </span>
+              </motion.span>
               <br />
               SHEET
-            </h1>
+            </motion.h1>
 
-            <p className="text-base sm:text-lg text-white/90 dark:text-gray-300 mb-6 leading-relaxed">
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="text-lg sm:text-xl lg:text-2xl text-white/90 dark:text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto px-4"
+            >
               We provide expert consulting services for managing and optimizing
               your balance sheet. Let us help you achieve financial clarity and
               stability.
-            </p>
+            </motion.p>
 
-            {/* Key Points */}
-            <div className="space-y-2.5 mb-8">
+            {/* Key Points with Icons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto"
+            >
               {[
                 "Strategic Financial Planning",
                 "Balance Sheet Optimization",
@@ -88,137 +101,70 @@ const Hero = () => {
               ].map((point, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4 + index * 0.1 }}
-                  className="flex items-center gap-2.5"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="group bg-white/5 backdrop-blur-sm border border-[#7FD99A]/30 rounded-xl p-6 transition-all duration-300 hover:bg-white/10 hover:border-[#7FD99A]/50 hover:shadow-lg"
                 >
-                  <div className="w-1.5 h-1.5 bg-[#7FD99A] dark:bg-emerald-400 rounded-full"></div>
-                  <span className="text-sm sm:text-base text-white/80 dark:text-gray-300">
-                    {point}
-                  </span>
+                  <div className="flex items-center justify-center gap-3">
+                    <div className="w-3 h-3 bg-[#7FD99A] dark:bg-emerald-400 rounded-full group-hover:scale-125 transition-transform"></div>
+                    <span className="text-base sm:text-lg text-white font-semibold text-center">
+                      {point}
+                    </span>
+                  </div>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+              className="flex flex-col sm:flex-row gap-5 justify-center items-center"
+            >
               <motion.button
                 onClick={() => scrollToSection("#contact")}
-                className="group bg-[#7FD99A] hover:bg-[#6BC885] dark:bg-emerald-500 dark:hover:bg-emerald-600 text-[#0D4A3F] dark:text-white px-6 py-3 rounded-full font-bold text-base transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                className="group relative bg-gradient-to-r from-[#7FD99A] to-[#6BC885] hover:from-[#6BC885] hover:to-[#5AB574] dark:from-emerald-500 dark:to-emerald-600 text-[#0D4A3F] dark:text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-2xl flex items-center justify-center gap-3 min-w-[200px]"
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 0.98 }}
               >
-                GET STARTED
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <span>GET STARTED</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
 
               <motion.button
                 onClick={() => scrollToSection("#services")}
-                className="bg-transparent border-2 border-[#7FD99A] dark:border-emerald-500 hover:bg-[#7FD99A]/10 dark:hover:bg-emerald-500/10 text-white dark:text-gray-200 px-6 py-3 rounded-full font-bold text-base transition-all duration-300"
+                className="group bg-transparent border-2 border-[#7FD99A] dark:border-emerald-500 hover:bg-[#7FD99A]/20 dark:hover:bg-emerald-500/20 text-white dark:text-gray-200 px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 min-w-[200px]"
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 0.98 }}
               >
                 LEARN MORE
               </motion.button>
-            </div>
-          </motion.div>
-        </div>
+            </motion.div>
 
-        {/* Right Side - Business Card */}
-        <div className="bg-[#7FD99A] dark:bg-emerald-500 flex items-center justify-center px-6 sm:px-8 lg:px-12 py-12 lg:py-16 relative">
-          {/* Decorative Elements */}
-          <div className="absolute inset-0 overflow-hidden">
+            {/* Trust Badge */}
             <motion.div
-              className="absolute top-10 right-10 w-40 h-40 bg-[#0D4A3F]/10 dark:bg-gray-900/20 rounded-full blur-3xl"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.3, 0.5, 0.3],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-              }}
-            />
-            <motion.div
-              className="absolute bottom-10 left-10 w-32 h-32 bg-white/10 dark:bg-white/5 rounded-full blur-2xl"
-              animate={{
-                scale: [1.2, 1, 1.2],
-                opacity: [0.2, 0.4, 0.2],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-              }}
-            />
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-full max-w-md relative z-10"
-          >
-            {/* Home Icon Image */}
-            <motion.div
-              className="mb-6 flex justify-center"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1.4 }}
+              className="mt-16 flex flex-wrap items-center justify-center gap-8 text-white/70 text-sm"
             >
-              <div className="bg-[#0D4A3F] dark:bg-gray-800 rounded-2xl p-6 shadow-2xl">
-                <motion.img
-                  src={homeIcon}
-                  alt="WBS Consultants"
-                  className="w-48 h-48 sm:w-56 sm:h-56 object-contain"
-                  animate={{
-                    scale: [1, 1.05, 1],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                <span>15+ Years Experience</span>
               </div>
-            </motion.div>
-
-            {/* Company Name */}
-            <motion.div
-              className="mb-6 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-            >
-              <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-[#0D4A3F] dark:text-gray-900 mb-2">
-                WBS
-              </h2>
-              <p className="text-2xl sm:text-3xl font-bold text-[#0D4A3F] dark:text-gray-900 tracking-wider">
-                CONSULTANTS
-              </p>
-            </motion.div>
-
-            {/* Contact Info */}
-            <motion.div
-              className="space-y-2.5 text-[#0D4A3F] dark:text-gray-900 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-            >
-              <p className="text-2xl sm:text-3xl font-bold">Shri</p>
-              <a
-                href="tel:+919371112215"
-                className="text-xl sm:text-2xl font-bold hover:text-[#0A5F4F] dark:hover:text-gray-700 transition-colors"
-              >
-                +91 937 111 2215
-              </a>{" "}
-              <br></br>
-              <a
-                href="mailto:wbsconsultants@outlook.com"
-                className="text-lg sm:text-xl font-semibold break-all hover:text-[#0A5F4F] dark:hover:text-gray-700 transition-colors"
-              >
-                wbsconsultants@outlook.com
-              </a>
+              <div className="hidden sm:block w-px h-4 bg-white/20"></div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                <span>100+ Projects Delivered</span>
+              </div>
+              <div className="hidden sm:block w-px h-4 bg-white/20"></div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                <span>12+ Industries Served</span>
+              </div>
             </motion.div>
           </motion.div>
         </div>

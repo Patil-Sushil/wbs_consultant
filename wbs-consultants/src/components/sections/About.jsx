@@ -128,41 +128,47 @@ const About = () => {
             ))}
           </motion.div>
 
-          {/* Features Grid */}
+          {/* Features as Bullet Points */}
           <motion.div
             variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="max-w-4xl mx-auto"
           >
-            {features.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  whileHover={{ y: -8 }}
-                  className="group relative p-6 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-transparent hover:shadow-2xl transition-all duration-300 overflow-hidden"
-                >
-                  {/* Gradient Background on Hover */}
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
-                  ></div>
-
-                  <div className="relative z-10">
-                    <div
-                      className={`inline-flex p-3 bg-gradient-to-br ${feature.color} rounded-lg mb-4 shadow-lg`}
-                    >
-                      <Icon className="w-6 h-6 text-white" />
+            <div className="space-y-6">
+              {features.map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    variants={itemVariants}
+                    className="flex items-start gap-4 group"
+                  >
+                    {/* Bullet Point */}
+                    <div className="flex-shrink-0 mt-1">
+                      <div className="w-3 h-3 bg-emerald-600 dark:bg-emerald-400 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      {feature.description}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
+
+                    {/* Content */}
+                    <div className="flex-1">
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-300">
+                        {feature.title}
+                      </h3>
+                      <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                        {feature.description}
+                      </p>
+                    </div>
+
+                    {/* Icon on the right */}
+                    <div className="hidden md:flex flex-shrink-0 items-center justify-center">
+                      <div
+                        className={`p-3 bg-gradient-to-br ${feature.color} rounded-lg shadow-lg opacity-50 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110`}
+                      >
+                        <Icon className="w-6 h-6 text-white" />
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
           </motion.div>
         </motion.div>
       </div>

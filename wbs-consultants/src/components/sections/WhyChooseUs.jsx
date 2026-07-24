@@ -64,41 +64,39 @@ const WhyChooseUs = () => {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="max-w-4xl mx-auto"
         >
-          {whyChooseUs.map((item) => (
-            <motion.div
-              key={item.id}
-              variants={cardVariants}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="group relative bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden"
-            >
-              {/* Gradient Background on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-              <div className="relative">
-                {/* Icon */}
-                <div className="flex items-start gap-3 mb-4">
-                  <div className="p-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg group-hover:bg-emerald-200 dark:group-hover:bg-emerald-900/50 transition-colors duration-300">
-                    <CheckCircle className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-300">
-                      {item.title}
-                    </h3>
-                  </div>
+          <div className="space-y-6">
+            {whyChooseUs.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, x: -20 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: 0.1 * index, duration: 0.5 }}
+                className="flex items-start gap-4 group"
+              >
+                {/* Bullet Point */}
+                <div className="flex-shrink-0 mt-1">
+                  <div className="w-3 h-3 bg-emerald-600 dark:bg-emerald-400 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
                 </div>
 
-                {/* Description */}
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  {item.description}
-                </p>
+                {/* Content */}
+                <div className="flex-1">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-300">
+                    {item.title}
+                  </h3>
+                  <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
 
-                {/* Decorative Element */}
-                <div className="absolute bottom-0 right-0 w-20 h-20 bg-emerald-100/20 dark:bg-emerald-900/10 rounded-full blur-2xl group-hover:bg-emerald-200/30 dark:group-hover:bg-emerald-900/20 transition-colors duration-300" />
-              </div>
-            </motion.div>
-          ))}
+                {/* Icon on the right (optional decoration) */}
+                <div className="hidden md:block flex-shrink-0 opacity-50 group-hover:opacity-100 transition-opacity duration-300">
+                  <CheckCircle className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Bottom CTA */}
