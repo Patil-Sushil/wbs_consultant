@@ -75,7 +75,7 @@ const ContactCTA = () => {
   return (
     <section
       id="contact"
-      className="py-20 bg-gradient-to-br from-emerald-50 via-teal-50 to-blue-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden"
+      className="py-12 bg-gradient-to-br from-emerald-50 via-teal-50 to-blue-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden"
     >
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden">

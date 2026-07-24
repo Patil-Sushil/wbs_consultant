@@ -16,7 +16,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative bg-gradient-to-br from-[#0D4A3F] via-[#0A5F4F] to-[#0D4A3F] dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-32 sm:pt-36 lg:pt-40 pb-20 overflow-hidden min-h-screen flex items-center"
+      className="relative bg-gradient-to-br from-[#0D4A3F] via-[#0A5F4F] to-[#0D4A3F] dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-28 sm:pt-32 pb-12 overflow-hidden min-h-[90vh] flex items-center"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden opacity-10">
@@ -59,7 +59,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white dark:text-gray-100 mb-8 leading-tight"
+              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white dark:text-gray-100 mb-6 leading-tight"
             >
               WORKS IN
               <br />
@@ -80,7 +80,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-lg sm:text-xl lg:text-2xl text-white/90 dark:text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto px-4"
+              className="text-base sm:text-lg lg:text-xl text-white/90 dark:text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto px-4"
             >
               We provide expert consulting services for managing and optimizing
               your balance sheet. Let us help you achieve financial clarity and
@@ -126,7 +126,7 @@ const Hero = () => {
             >
               <motion.button
                 onClick={() => scrollToSection("#contact")}
-                className="group relative bg-gradient-to-r from-[#7FD99A] to-[#6BC885] hover:from-[#6BC885] hover:to-[#5AB574] dark:from-emerald-500 dark:to-emerald-600 text-[#0D4A3F] dark:text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-2xl flex items-center justify-center gap-3 min-w-[200px]"
+                className="group relative bg-gradient-to-r from-[#7FD99A] to-[#6BC885] hover:from-[#6BC885] hover:to-[#5AB574] dark:from-emerald-500 dark:to-emerald-600 text-[#0D4A3F] dark:text-white px-8 py-3 rounded-full font-bold text-base transition-all duration-300 shadow-lg hover:shadow-2xl flex items-center justify-center gap-2 min-w-[180px]"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -136,7 +136,7 @@ const Hero = () => {
 
               <motion.button
                 onClick={() => scrollToSection("#services")}
-                className="group bg-transparent border-2 border-[#7FD99A] dark:border-emerald-500 hover:bg-[#7FD99A]/20 dark:hover:bg-emerald-500/20 text-white dark:text-gray-200 px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 min-w-[200px]"
+                className="group bg-transparent border-2 border-[#7FD99A] dark:border-emerald-500 hover:bg-[#7FD99A]/20 dark:hover:bg-emerald-500/20 text-white dark:text-gray-200 px-8 py-3 rounded-full font-bold text-base transition-all duration-300 min-w-[180px]"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -149,7 +149,7 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.4 }}
-              className="mt-16 flex flex-wrap items-center justify-center gap-8 text-white/70 text-sm"
+              className="mt-10 flex flex-wrap items-center justify-center gap-6 text-white/70 text-xs sm:text-sm"
             >
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>

@@ -7,7 +7,6 @@ import Services from "../components/sections/Services";
 import ConsultantVsAnalyst from "../components/sections/ConsultantVsAnalyst";
 import DetailedServices from "../components/sections/DetailedServices";
 import WhyChooseUs from "../components/sections/WhyChooseUs";
-import Testimonials from "../components/sections/Testimonials";
 import ContactCTA from "../components/sections/ContactCTA";
 import WhatsAppButton from "../components/ui/WhatsAppButton";
 import PreLoader from "../components/ui/PreLoader";
@@ -29,7 +28,6 @@ const Home = () => {
         <ConsultantVsAnalyst />
         <DetailedServices />
         <WhyChooseUs />
-        <Testimonials />
         <ContactCTA />
       </main>
 

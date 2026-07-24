@@ -34,26 +34,26 @@ const WhyChooseUs = () => {
   return (
     <section
       id="why-us"
-      className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900"
+      className="py-12 bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Sparkles className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <Sparkles className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
               Why Choose{" "}
               <span className="text-emerald-600 dark:text-emerald-400">
                 WBS Consultants
               </span>
             </h2>
-            <Sparkles className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
+            <Sparkles className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
           </div>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             We deliver exceptional value through expertise, innovation, and
             unwavering commitment to your success
           </p>
