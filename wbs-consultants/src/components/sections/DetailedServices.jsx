@@ -452,22 +452,22 @@ const DetailedServices = () => {
   return (
     <section
       id="detailed-services"
-      className="py-12 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
+      className="py-6 sm:py-12 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 overflow-x-hidden w-full"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-4 sm:mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-1.5 sm:mb-4">
             Our Expertise in{" "}
             <span className="text-emerald-600 dark:text-emerald-400">
               Detail
             </span>
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          <p className="text-xs sm:text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Explore our comprehensive range of services designed to transform
             your business
           </p>
@@ -478,7 +478,7 @@ const DetailedServices = () => {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="space-y-4"
+          className="space-y-2 sm:space-y-4"
         >
           {services.map((service) => {
             const data = detailedServices[service.key];
@@ -493,7 +493,7 @@ const DetailedServices = () => {
               >
                 <motion.button
                   onClick={() => toggleService(service.key)}
-                  className={`w-full px-6 py-5 transition-colors duration-200 flex justify-between items-center group ${
+                  className={`w-full px-3 sm:px-6 py-2.5 sm:py-5 transition-colors duration-200 flex justify-between items-center group ${
                     isExpanded
                       ? "bg-emerald-50 dark:bg-emerald-900/20"
                       : "bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-750"
@@ -503,7 +503,7 @@ const DetailedServices = () => {
                 >
                   <div className="text-left">
                     <h3
-                      className={`text-xl font-semibold transition-colors ${
+                      className={`text-sm sm:text-lg md:text-xl font-semibold transition-colors ${
                         isExpanded
                           ? "text-emerald-600 dark:text-emerald-400"
                           : "text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400"
@@ -511,7 +511,7 @@ const DetailedServices = () => {
                     >
                       {data.title}
                     </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    <p className="text-[10px] sm:text-sm text-gray-600 dark:text-gray-400 mt-0.5 sm:mt-1">
                       {data.subtitle}
                     </p>
                   </div>
@@ -520,7 +520,7 @@ const DetailedServices = () => {
                     transition={{ duration: 0.3 }}
                   >
                     <ChevronDown
-                      className={`w-6 h-6 flex-shrink-0 ${
+                      className={`w-4 h-4 sm:w-6 sm:h-6 flex-shrink-0 ${
                         isExpanded
                           ? "text-emerald-600 dark:text-emerald-400"
                           : "text-emerald-600 dark:text-emerald-400"
@@ -538,7 +538,7 @@ const DetailedServices = () => {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 py-6 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-700">
+                      <div className="px-3 sm:px-6 py-3 sm:py-6 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-700">
                         {renderServiceContent(service, data)}
                       </div>
                     </motion.div>

@@ -6,7 +6,7 @@ const Hero = () => {
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
     if (element) {
-      const offset = 80;
+      const offset = 90; // Account for navbar height
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
       window.scrollTo({ top: offsetPosition, behavior: "smooth" });
@@ -16,7 +16,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative bg-gradient-to-br from-[#0D4A3F] via-[#0A5F4F] to-[#0D4A3F] dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-28 sm:pt-32 pb-12 overflow-hidden min-h-[90vh] flex items-center"
+      className="relative bg-gradient-to-br from-[#0D4A3F] via-[#0A5F4F] to-[#0D4A3F] dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-16 sm:pt-32 lg:pt-36 pb-4 sm:pb-16 overflow-hidden min-h-[60vh] sm:min-h-screen flex items-center w-full"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden opacity-10">
@@ -47,7 +47,7 @@ const Hero = () => {
 
       <div className="w-full relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Content Container */}
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -59,7 +59,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white dark:text-gray-100 mb-6 leading-tight"
+              className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white dark:text-gray-100 mb-2 sm:mb-6 leading-tight"
             >
               WORKS IN
               <br />
@@ -80,7 +80,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-base sm:text-lg lg:text-xl text-white/90 dark:text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto px-4"
+              className="text-xs sm:text-base md:text-lg lg:text-xl text-white/90 dark:text-gray-300 mb-3 sm:mb-8 leading-relaxed max-w-3xl mx-auto px-4"
             >
               We provide expert consulting services for managing and optimizing
               your balance sheet. Let us help you achieve financial clarity and
@@ -92,7 +92,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto"
+              className="grid grid-cols-1 md:grid-cols-3 gap-1.5 sm:gap-6 mb-4 sm:mb-12 max-w-4xl mx-auto px-4"
             >
               {[
                 "Strategic Financial Planning",
@@ -105,11 +105,11 @@ const Hero = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
                   whileHover={{ scale: 1.05, y: -5 }}
-                  className="group bg-white/5 backdrop-blur-sm border border-[#7FD99A]/30 rounded-xl p-6 transition-all duration-300 hover:bg-white/10 hover:border-[#7FD99A]/50 hover:shadow-lg"
+                  className="group bg-white/5 backdrop-blur-sm border border-[#7FD99A]/30 rounded-lg sm:rounded-xl p-2 sm:p-6 transition-all duration-300 hover:bg-white/10 hover:border-[#7FD99A]/50 hover:shadow-lg"
                 >
-                  <div className="flex items-center justify-center gap-3">
-                    <div className="w-3 h-3 bg-[#7FD99A] dark:bg-emerald-400 rounded-full group-hover:scale-125 transition-transform"></div>
-                    <span className="text-base sm:text-lg text-white font-semibold text-center">
+                  <div className="flex items-center justify-center gap-2 sm:gap-3">
+                    <div className="w-1.5 h-1.5 sm:w-3 sm:h-3 bg-[#7FD99A] dark:bg-emerald-400 rounded-full group-hover:scale-125 transition-transform flex-shrink-0"></div>
+                    <span className="text-[10px] sm:text-base lg:text-lg text-white font-semibold text-center">
                       {point}
                     </span>
                   </div>
@@ -122,21 +122,21 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.2 }}
-              className="flex flex-col sm:flex-row gap-5 justify-center items-center"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center items-center px-4"
             >
               <motion.button
                 onClick={() => scrollToSection("#contact")}
-                className="group relative bg-gradient-to-r from-[#7FD99A] to-[#6BC885] hover:from-[#6BC885] hover:to-[#5AB574] dark:from-emerald-500 dark:to-emerald-600 text-[#0D4A3F] dark:text-white px-8 py-3 rounded-full font-bold text-base transition-all duration-300 shadow-lg hover:shadow-2xl flex items-center justify-center gap-2 min-w-[180px]"
+                className="group relative bg-gradient-to-r from-[#7FD99A] to-[#6BC885] hover:from-[#6BC885] hover:to-[#5AB574] dark:from-emerald-500 dark:to-emerald-600 text-[#0D4A3F] dark:text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-bold text-xs sm:text-base transition-all duration-300 shadow-lg hover:shadow-2xl flex items-center justify-center gap-2 w-full sm:w-auto sm:min-w-[180px]"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <span>GET STARTED</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
 
               <motion.button
                 onClick={() => scrollToSection("#services")}
-                className="group bg-transparent border-2 border-[#7FD99A] dark:border-emerald-500 hover:bg-[#7FD99A]/20 dark:hover:bg-emerald-500/20 text-white dark:text-gray-200 px-8 py-3 rounded-full font-bold text-base transition-all duration-300 min-w-[180px]"
+                className="group bg-transparent border-2 border-[#7FD99A] dark:border-emerald-500 hover:bg-[#7FD99A]/20 dark:hover:bg-emerald-500/20 text-white dark:text-gray-200 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-bold text-xs sm:text-base transition-all duration-300 w-full sm:w-auto sm:min-w-[180px]"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -149,7 +149,7 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.4 }}
-              className="mt-10 flex flex-wrap items-center justify-center gap-6 text-white/70 text-xs sm:text-sm"
+              className="mt-4 sm:mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-6 text-white/70 text-[10px] sm:text-xs px-4"
             >
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>

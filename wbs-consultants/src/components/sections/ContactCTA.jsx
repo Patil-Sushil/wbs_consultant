@@ -75,7 +75,7 @@ const ContactCTA = () => {
   return (
     <section
       id="contact"
-      className="py-12 bg-gradient-to-br from-emerald-50 via-teal-50 to-blue-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden"
+      className="py-8 sm:py-12 bg-gradient-to-br from-emerald-50 via-teal-50 to-blue-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden w-full"
     >
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden">
@@ -105,20 +105,20 @@ const ContactCTA = () => {
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-6 sm:mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-4">
             Let's Transform Your{" "}
             <span className="text-emerald-600 dark:text-emerald-400">
               Business Together
             </span>
           </h2>
-          <p className="text-xl text-gray-700 dark:text-gray-300">
+          <p className="text-sm sm:text-xl text-gray-700 dark:text-gray-300">
             Ready to take the next step? Schedule your consultation today!
           </p>
         </motion.div>
@@ -128,7 +128,7 @@ const ContactCTA = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12"
         >
           {/* Contact Information */}
           <motion.div
@@ -136,11 +136,11 @@ const ContactCTA = () => {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+            <h3 className="text-lg sm:text-2xl font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">
               Get in Touch
             </h3>
 
-            <div className="space-y-6">
+            <div className="space-y-3 sm:space-y-6">
               {[
                 {
                   icon: Mail,
@@ -169,24 +169,24 @@ const ContactCTA = () => {
                     animate={inView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                     whileHover={{ x: 5 }}
-                    className="flex items-start space-x-4"
+                    className="flex items-start space-x-3 sm:space-x-4"
                   >
-                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
-                      <Icon className="w-6 h-6 text-white" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
+                      <h4 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-0.5 sm:mb-1">
                         {item.title}
                       </h4>
                       {item.href ? (
                         <a
                           href={item.href}
-                          className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                          className="text-xs sm:text-base text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
                         >
                           {item.content}
                         </a>
                       ) : (
-                        <p className="text-gray-600 dark:text-gray-400">
+                        <p className="text-xs sm:text-base text-gray-600 dark:text-gray-400">
                           {item.content}
                         </p>
                       )}
@@ -200,12 +200,12 @@ const ContactCTA = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="mt-8 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700"
+              className="mt-4 sm:mt-8 p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md sm:shadow-lg border border-gray-100 dark:border-gray-700"
             >
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-3">
+              <h4 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-1.5 sm:mb-3">
                 Office Hours
               </h4>
-              <div className="space-y-2 text-gray-600 dark:text-gray-400">
+              <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                 <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
                 <p>Saturday: 10:00 AM - 4:00 PM</p>
                 <p>Sunday: Closed</p>
@@ -218,9 +218,9 @@ const ContactCTA = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 border border-gray-100 dark:border-gray-700"
+            className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl p-4 sm:p-8 border border-gray-100 dark:border-gray-700"
           >
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+            <h3 className="text-lg sm:text-2xl font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">
               Schedule a Consultation
             </h3>
 
@@ -257,7 +257,7 @@ const ContactCTA = () => {
                   </motion.div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-6">
                   {[
                     {
                       name: "name",
@@ -296,11 +296,11 @@ const ContactCTA = () => {
                         animate={inView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
                       >
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 sm:mb-2">
                           {field.label} *
                         </label>
                         <div className="relative">
-                          <Icon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                          <Icon className="absolute left-2.5 sm:left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
                           <input
                             type={field.type}
                             name={field.name}
@@ -308,7 +308,7 @@ const ContactCTA = () => {
                             onChange={handleChange}
                             required
                             min={field.min}
-                            className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all duration-300"
+                            className="w-full pl-9 pr-3 py-2 sm:py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-700 text-xs sm:text-base text-gray-900 dark:text-white transition-all duration-300"
                             placeholder={field.placeholder}
                           />
                         </div>
@@ -321,17 +321,16 @@ const ContactCTA = () => {
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.9 }}
                   >
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 sm:mb-2">
                       Message (Optional)
                     </label>
                     <div className="relative">
-                      <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                      <MessageSquare className="absolute left-2.5 sm:left-3 top-2.5 sm:top-3 w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
                       <textarea
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
-                        rows="4"
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none transition-all duration-300"
+                        className="w-full pl-9 pr-3 py-2 sm:py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-700 text-xs sm:text-base text-gray-900 dark:text-white resize-none transition-all duration-300 h-16 sm:h-32"
                         placeholder="Tell us about your business needs..."
                       ></textarea>
                     </div>
@@ -342,13 +341,13 @@ const ContactCTA = () => {
                     disabled={loading}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold py-4 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                    className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-xs sm:text-base font-semibold py-2.5 sm:py-4 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                   >
                     {loading ? (
                       "Submitting..."
                     ) : (
                       <>
-                        <Send className="w-5 h-5" />
+                        <Send className="w-4 h-4 sm:w-5 sm:h-5" />
                         Schedule Consultation
                       </>
                     )}
