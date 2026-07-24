@@ -23,9 +23,9 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Poppins", "Inter", "sans-serif"],
-        accent: ["Montserrat", "sans-serif"],
+        sans: ["Trebuchet MS", "Inter", "system-ui", "sans-serif"],
+        display: ["Trebuchet MS", "Poppins", "Inter", "sans-serif"],
+        accent: ["Trebuchet MS", "Montserrat", "sans-serif"],
       },
       animation: {
         "fade-in": "fadeIn 0.6s ease-in-out",
